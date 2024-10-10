@@ -82,7 +82,7 @@ const int R_CNTR_PORT = 12;
 const int R_REAR_PORT = 13;
 
 // Field Data
-const double tile = 
+const double tile = 0;
 
 // motors (left) :3
 const inline pros::Motor LEFT_FRONT(L_FRNT_PORT, GEAR_BLUE);
