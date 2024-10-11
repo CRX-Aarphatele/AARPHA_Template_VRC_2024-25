@@ -25,19 +25,47 @@
 #include "pros/adi.hpp"
 #include "pros/motors.h"
 #include "pros/motors.hpp"
+#include "pros/rtos.hpp"
 
+#ifndef PI
+#define PI 3.14159265359
+#endif
+
+/*
+
+Vex Constants
+
+*/
+
+// motor stuff
 const double RPM_RED = 100;
 const double RPM_GRN = 200;
 const double RPM_BLU = 600;
 
-const pros::MotorGears GEAR_RED = pros::v5::MotorGears::red;
-const pros::MotorGears GEAR_GREEN = pros::v5::MotorGears::green;
-const pros::MotorGears GEAR_BLUE = pros::v5::MotorGears::blue;
+const pros::MotorGears GEAR_RED = pros::MotorGears::red;
+const pros::MotorGears GEAR_GREEN = pros::MotorGears::green;
+const pros::MotorGears GEAR_BLUE = pros::MotorGears::blue;
+
+const pros::MotorEncoderUnits ENCODER_ROTATIONS = pros::MotorEncoderUnits::rotations;
+const pros::MotorEncoderUnits ENCODER_COUNTS = pros::MotorEncoderUnits::counts;
+const pros::MotorEncoderUnits ENCODER_DEGREES = pros::MotorEncoderUnits::degrees;
+const pros::MotorEncoderUnits ENCODER_INVALID = pros::MotorEncoderUnits::invalid;
+
 
 const int MTR_MAX = 127;
 
+// drivetrain ratio
+const double DRIVE_RATIO = 0;
+
+// wheel diameter + radius
 const double WHL_DIAMETER = 2.75;
 const double WHL_RADIUS = WHL_DIAMETER/2;
+
+/*
+
+Controller
+
+*/
 
 // get main controller
 const inline pros::Controller MASTER(pros::E_CONTROLLER_MASTER);
@@ -71,6 +99,12 @@ namespace controller {
     btn rt = pros::E_CONTROLLER_DIGITAL_R2;
 }
 
+/*
+
+Motors
+
+*/
+
 // motor ports (left)
 const int L_FRNT_PORT = 1;
 const int L_CNTR_PORT = 2;
@@ -81,21 +115,84 @@ const int R_FRNT_PORT = 11;
 const int R_CNTR_PORT = 12;
 const int R_REAR_PORT = 13;
 
-// Field Data
-const double tile = 0;
+// motor ports (misc)
+const int INTAKE_PORT = 10;
 
-// motors (left) :3
-const inline pros::Motor LEFT_FRONT(L_FRNT_PORT, GEAR_BLUE);
-const inline pros::Motor LEFT_CENTER(L_CNTR_PORT, GEAR_BLUE);
-const inline pros::Motor LEFT_REAR(L_REAR_PORT, GEAR_BLUE);
+// Field Data
+const double tile = 2;
+const double field = 6*2;
+
+// motors (left)
+const inline pros::Motor LEFT_FRONT(L_FRNT_PORT, GEAR_BLUE, ENCODER_ROTATIONS);
+const inline pros::Motor LEFT_CENTER(L_CNTR_PORT, GEAR_BLUE, ENCODER_ROTATIONS);
+const inline pros::Motor LEFT_REAR(L_REAR_PORT, GEAR_BLUE, ENCODER_ROTATIONS);
+
+#define L_REVERSE 0
+
+#if L_REVERSE == 0
 const inline pros::MotorGroup LEFT_GROUP({L_FRNT_PORT,L_CNTR_PORT,L_REAR_PORT}, GEAR_BLUE);
+#elif L_REVERSE == 1
+const inline pros::MotorGroup LEFT_GROUP({-L_FRNT_PORT,-L_CNTR_PORT,-L_REAR_PORT}, GEAR_BLUE);
+#endif
 
 // motors (right)
-const inline pros::Motor RIGHT_FRONT(R_FRNT_PORT, GEAR_BLUE);
-const inline pros::Motor RIGHT_CENTER(R_CNTR_PORT, GEAR_BLUE);
-const inline pros::Motor RIGHT_REAR(R_REAR_PORT, GEAR_BLUE);
+const inline pros::Motor RIGHT_FRONT(R_FRNT_PORT, GEAR_BLUE, ENCODER_ROTATIONS);
+const inline pros::Motor RIGHT_CENTER(R_CNTR_PORT, GEAR_BLUE, ENCODER_ROTATIONS);
+const inline pros::Motor RIGHT_REAR(R_REAR_PORT, GEAR_BLUE, ENCODER_ROTATIONS);
+
+#define R_REVERSE 1
+
+#if R_REVERSE == 0
 const inline pros::MotorGroup RIGHT_GROUP({R_FRNT_PORT,R_CNTR_PORT,R_REAR_PORT}, GEAR_BLUE);
+#elif R_REVERSE == 1
+const inline pros::MotorGroup RIGHT_GROUP({-R_FRNT_PORT,-R_CNTR_PORT,-R_REAR_PORT}, GEAR_BLUE);
+#endif
+
+// motors (misc)
+const inline pros::Motor INTAKE(INTAKE_PORT,GEAR_BLUE);
+
+/*
+
+ADI ports
+
+*/
 
 // pneumatics, sensors, etc.
-const pros::adi::DigitalOut ADI_A = pros::adi::DigitalOut(1);
+const pros::adi::DigitalOut CLAW = pros::adi::DigitalOut(1);
 
+/*
+
+Methods and/or functions
+
+*/
+
+#define TIME_TYPE 1
+
+#if TIME_TYPE == 0
+inline double cur_time(){
+    timespec t;
+    clock_gettime(CLOCK_REALTIME, &t);
+    return t.tv_sec+t.tv_nsec*0.000000001;
+}
+#elif TIME_TYPE == 1
+inline double cur_time(){
+    return pros::micros()*0.000001;
+}
+#endif
+
+/*
+
+Auton
+
+*/
+
+enum autonEnum {
+    NOTHING = 0,
+    DEFENSE = 1,
+    OFFENSE = 2,
+
+    SOLO_AWP_A = -1,
+    SOLO_AWP_B = -2,
+    SOLO_AWP_C = -3
+};
+inline int autonSelect = NOTHING;
