@@ -2,7 +2,7 @@
 
 #include "lib/opcontrol.cpp"
 #include "globals.hpp"
-#include "autons/autonRoutes.cpp"
+#include "autons/autonlib.hpp"
 
 /**
  * A callback function for LLEMU's center button.
@@ -84,6 +84,6 @@ void opcontrol() {
 
 	while (true) {
 		opMainLoop();
-		pros::delay(20);                               // Run for 20 ms then update
+		pros::delay(10); // Run for 10 ms then update
 	}
 }

@@ -4,6 +4,7 @@
 
 #include "pros/abstract_motor.hpp"
 #include "pros/adi.h"
+#include "pros/imu.hpp"
 #include "pros/misc.h"
 #include "pros/misc.hpp"
 #include "pros/motor_group.hpp"
@@ -27,9 +28,7 @@
 #include "pros/motors.hpp"
 #include "pros/rtos.hpp"
 
-#ifndef PI
-#define PI 3.14159265359
-#endif
+inline const int PI = M_PI;
 
 /*
 
@@ -153,12 +152,16 @@ const inline pros::Motor INTAKE(INTAKE_PORT,GEAR_BLUE);
 
 /*
 
-ADI ports
+ADI and Sensors
 
 */
 
+const int CLAW_PORT = 1;
+const int IMU_PORT = 20;
+
 // pneumatics, sensors, etc.
-const pros::adi::DigitalOut CLAW = pros::adi::DigitalOut(1);
+const pros::adi::DigitalOut CLAW = pros::adi::DigitalOut(CLAW_PORT);
+const pros::Imu S_INERTIA = pros::IMU(IMU_PORT);
 
 /*
 
@@ -172,27 +175,14 @@ Methods and/or functions
 inline double cur_time(){
     timespec t;
     clock_gettime(CLOCK_REALTIME, &t);
-    return t.tv_sec+t.tv_nsec*0.000000001;
+    return t.tv_sec+t.tv_nsec*0.001;
 }
 #elif TIME_TYPE == 1
 inline double cur_time(){
-    return pros::micros()*0.000001;
+    return pros::millis();
 }
 #endif
 
-/*
-
-Auton
-
-*/
-
-enum autonEnum {
-    NOTHING = 0,
-    DEFENSE = 1,
-    OFFENSE = 2,
-
-    SOLO_AWP_A = -1,
-    SOLO_AWP_B = -2,
-    SOLO_AWP_C = -3
-};
-inline int autonSelect = NOTHING;
+inline double rot_per_dist(double distance){
+    return distance/WHL_DIAMETER*M_PI;
+}

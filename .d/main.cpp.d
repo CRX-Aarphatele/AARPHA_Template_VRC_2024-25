@@ -131,7 +131,7 @@ bin/main.cpp.o: src/main.cpp include/main.h include/api.h \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
  include/pros/vision.h src/lib/opcontrol.cpp src/lib/oplib.hpp \
  src/lib/../globals.hpp include/pros/motor_group.hpp include/pros/adi.hpp \
- src/autons/auton_route.cpp src/autons/autonlib.hpp src/autons/pid.hpp
+ src/autons/autonlib.hpp src/autons/../lib/PIDcontrol.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -351,6 +351,5 @@ src/lib/oplib.hpp:
 src/lib/../globals.hpp:
 include/pros/motor_group.hpp:
 include/pros/adi.hpp:
-src/autons/auton_route.cpp:
 src/autons/autonlib.hpp:
-src/autons/pid.hpp:
+src/autons/../lib/PIDcontrol.hpp:
