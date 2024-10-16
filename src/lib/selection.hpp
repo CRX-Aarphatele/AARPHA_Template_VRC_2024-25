@@ -8,9 +8,9 @@
 #include "liblvgl/misc/lv_color.h"
 #include "pros/colors.h"
 #include "pros/colors.hpp"
-#include "../lvgl/lvgl.h"
+#include "../include/lvgl/lvgl.h"
 #include <cstdint>
-#include "../../lvgl/examples/lv_examples.h" // idk
+#include "../include/lvgl/examples/lv_examples.h" // idk
 
 /*
 
