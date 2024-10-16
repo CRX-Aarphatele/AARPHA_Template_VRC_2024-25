@@ -130,8 +130,9 @@ bin/main.cpp.o: src/main.cpp include/main.h include/api.h \
  include/pros/rotation.hpp include/pros/rotation.h include/pros/rtos.hpp \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
  include/pros/vision.h src/lib/opcontrol.cpp src/lib/oplib.hpp \
- src/lib/../globals.hpp include/pros/motor_group.hpp include/pros/adi.hpp \
- src/autons/autonlib.hpp src/autons/../lib/PIDcontrol.hpp
+ src/lib/../globals.hpp include/pros/imu.hpp include/pros/motor_group.hpp \
+ include/pros/adi.hpp src/autons/autonlib.hpp \
+ src/autons/../lib/PIDcontrol.hpp
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -349,6 +350,7 @@ include/pros/vision.h:
 src/lib/opcontrol.cpp:
 src/lib/oplib.hpp:
 src/lib/../globals.hpp:
+include/pros/imu.hpp:
 include/pros/motor_group.hpp:
 include/pros/adi.hpp:
 src/autons/autonlib.hpp:

@@ -129,7 +129,8 @@ bin/lib/opcontrol.cpp.o: src/lib/opcontrol.cpp src/lib/oplib.hpp \
  include/pros/motors.hpp include/pros/optical.hpp include/pros/optical.h \
  include/pros/rotation.hpp include/pros/rotation.h include/pros/rtos.hpp \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
- include/pros/vision.h include/pros/motor_group.hpp include/pros/adi.hpp
+ include/pros/vision.h include/pros/imu.hpp include/pros/motor_group.hpp \
+ include/pros/adi.hpp
 src/lib/oplib.hpp:
 src/lib/../globals.hpp:
 include/main.h:
@@ -346,5 +347,6 @@ include/pros/screen.hpp:
 include/pros/screen.h:
 include/pros/vision.hpp:
 include/pros/vision.h:
+include/pros/imu.hpp:
 include/pros/motor_group.hpp:
 include/pros/adi.hpp:
