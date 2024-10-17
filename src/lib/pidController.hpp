@@ -9,9 +9,11 @@ namespace pid {
     inline void move_forward_pid(double dist, double Kp, double Ki, double Kd, double N, double delayTime, double timeMax, int direction =1){
         // https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller#Pseudocode 
 
+        // reset position of motors
         LEFT_GROUP.tare_position();
         RIGHT_GROUP.tare_position();
 
+        // set errors to 0
         double error_L[3] = {
             0,0,0
         };
