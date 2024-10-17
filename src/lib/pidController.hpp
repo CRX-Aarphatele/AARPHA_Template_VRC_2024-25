@@ -5,7 +5,7 @@
 #include "pros/rtos.hpp"
 #include <math.h>
 
-namespace pid { // signature of JH :3
+namespace pid {
     inline void move_forward_pid(double dist, double Kp, double Ki, double Kd, double N, double delayTime, double timeMax, int direction =1){
         // https://en.wikipedia.org/wiki/Proportional%E2%80%93integral%E2%80%93derivative_controller#Pseudocode 
 
