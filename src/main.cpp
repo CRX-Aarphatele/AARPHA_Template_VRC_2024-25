@@ -1,11 +1,15 @@
 #include "main.h"
 
-#include "lib/opcontrol.cpp"
 #include "globals.hpp"
-#include "autons/autonlib.hpp"
+#include "autons/autonLib.hpp"
+#include "lib/selection.hpp"
 
 /**
- * A callback function for LLEMU's center button.
+ * A callback function for LLEMU's center button.void initSelector(){
+    button mikeel(20,20, 200,50,lv_color_hex(0x403C40),lv_color_hex(0xFFF2FE),lv_color_hex(0x9c919c),lv_color_make(90,85,30));
+
+    mikeel.draw();
+}
  *
  * When this callback is fired, it will toggle line 2 of the LCD text between
  * "I was pressed!" and nothing.
@@ -31,6 +35,7 @@ void initialize() {
 	pros::lcd::set_text(1, "Hello PROS User!");
 
 	pros::lcd::register_btn1_cb(on_center_button);
+	initSelectorMenu();
 }
 
 /**
@@ -38,7 +43,9 @@ void initialize() {
  * the VEX Competition Switch, following either autonomous or opcontrol. When
  * the robot is enabled, this task will exit.
  */
-void disabled() {}
+void disabled() {
+
+}
 
 /**
  * Runs after initialize(), and before autonomous when connected to the Field
@@ -80,10 +87,5 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	opInit();
-
-	while (true) {
-		opMainLoop();
-		pros::delay(10); // Run for 10 ms then update
-	}
+	
 }

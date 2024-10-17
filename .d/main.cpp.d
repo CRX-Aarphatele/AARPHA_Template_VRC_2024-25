@@ -129,10 +129,47 @@ bin/main.cpp.o: src/main.cpp include/main.h include/api.h \
  include/pros/motors.hpp include/pros/optical.hpp include/pros/optical.h \
  include/pros/rotation.hpp include/pros/rotation.h include/pros/rtos.hpp \
  include/pros/screen.hpp include/pros/screen.h include/pros/vision.hpp \
- include/pros/vision.h src/lib/opcontrol.cpp src/lib/oplib.hpp \
- src/lib/../globals.hpp include/pros/imu.hpp include/pros/motor_group.hpp \
- include/pros/adi.hpp src/autons/autonlib.hpp \
- src/autons/../lib/PIDcontrol.hpp
+ include/pros/vision.h src/globals.hpp include/pros/imu.hpp \
+ include/pros/motor_group.hpp include/pros/adi.hpp \
+ src/autons/autonLib.hpp src/autons/../lib/pidController.hpp \
+ src/lib/selection.hpp include/liblvgl/core/lv_obj_style.h \
+ include/liblvgl/draw/lv_draw_rect.h include/../include/lvgl/lvgl.h \
+ include/../include/lvgl/examples/lv_examples.h \
+ include/../include/lvgl/examples/../lvgl.h \
+ include/../include/lvgl/examples/anim/lv_example_anim.h \
+ include/../include/lvgl/examples/event/lv_example_event.h \
+ include/../include/lvgl/examples/get_started/lv_example_get_started.h \
+ include/../include/lvgl/examples/layouts/lv_example_layout.h \
+ include/../include/lvgl/examples/layouts/flex/lv_example_flex.h \
+ include/../include/lvgl/examples/layouts/grid/lv_example_grid.h \
+ include/../include/lvgl/examples/libs/lv_example_libs.h \
+ include/../include/lvgl/examples/libs/barcode/lv_example_barcode.h \
+ include/../include/lvgl/examples/libs/bmp/lv_example_bmp.h \
+ include/../include/lvgl/examples/libs/ffmpeg/lv_example_ffmpeg.h \
+ include/../include/lvgl/examples/libs/freetype/lv_example_freetype.h \
+ include/../include/lvgl/examples/libs/gif/lv_example_gif.h \
+ include/../include/lvgl/examples/libs/lodepng/lv_example_lodepng.h \
+ include/../include/lvgl/examples/libs/libpng/lv_example_libpng.h \
+ include/../include/lvgl/examples/libs/qrcode/lv_example_qrcode.h \
+ include/../include/lvgl/examples/libs/rlottie/lv_example_rlottie.h \
+ include/../include/lvgl/examples/libs/tjpgd/lv_example_tjpgd.h \
+ include/../include/lvgl/examples/libs/libjpeg_turbo/lv_example_libjpeg_turbo.h \
+ include/../include/lvgl/examples/libs/tiny_ttf/lv_example_tiny_ttf.h \
+ include/../include/lvgl/examples/libs/svg/lv_example_svg.h \
+ include/../include/lvgl/examples/others/lv_example_others.h \
+ include/../include/lvgl/examples/others/file_explorer/lv_example_file_explorer.h \
+ include/../include/lvgl/examples/others/font_manager/lv_example_font_manager.h \
+ include/../include/lvgl/examples/others/fragment/lv_example_fragment.h \
+ include/../include/lvgl/examples/others/gridnav/lv_example_gridnav.h \
+ include/../include/lvgl/examples/others/ime/lv_example_ime_pinyin.h \
+ include/../include/lvgl/examples/others/imgfont/lv_example_imgfont.h \
+ include/../include/lvgl/examples/others/monkey/lv_example_monkey.h \
+ include/../include/lvgl/examples/others/observer/lv_example_observer.h \
+ include/../include/lvgl/examples/others/snapshot/lv_example_snapshot.h \
+ include/../include/lvgl/examples/porting/osal/lv_example_osal.h \
+ include/../include/lvgl/examples/scroll/lv_example_scroll.h \
+ include/../include/lvgl/examples/styles/lv_example_style.h \
+ include/../include/lvgl/examples/widgets/lv_example_widgets.h
 include/main.h:
 include/api.h:
 include/pros/adi.h:
@@ -347,11 +384,49 @@ include/pros/screen.hpp:
 include/pros/screen.h:
 include/pros/vision.hpp:
 include/pros/vision.h:
-src/lib/opcontrol.cpp:
-src/lib/oplib.hpp:
-src/lib/../globals.hpp:
+src/globals.hpp:
 include/pros/imu.hpp:
 include/pros/motor_group.hpp:
 include/pros/adi.hpp:
-src/autons/autonlib.hpp:
-src/autons/../lib/PIDcontrol.hpp:
+src/autons/autonLib.hpp:
+src/autons/../lib/pidController.hpp:
+src/lib/selection.hpp:
+include/liblvgl/core/lv_obj_style.h:
+include/liblvgl/draw/lv_draw_rect.h:
+include/../include/lvgl/lvgl.h:
+include/../include/lvgl/examples/lv_examples.h:
+include/../include/lvgl/examples/../lvgl.h:
+include/../include/lvgl/examples/anim/lv_example_anim.h:
+include/../include/lvgl/examples/event/lv_example_event.h:
+include/../include/lvgl/examples/get_started/lv_example_get_started.h:
+include/../include/lvgl/examples/layouts/lv_example_layout.h:
+include/../include/lvgl/examples/layouts/flex/lv_example_flex.h:
+include/../include/lvgl/examples/layouts/grid/lv_example_grid.h:
+include/../include/lvgl/examples/libs/lv_example_libs.h:
+include/../include/lvgl/examples/libs/barcode/lv_example_barcode.h:
+include/../include/lvgl/examples/libs/bmp/lv_example_bmp.h:
+include/../include/lvgl/examples/libs/ffmpeg/lv_example_ffmpeg.h:
+include/../include/lvgl/examples/libs/freetype/lv_example_freetype.h:
+include/../include/lvgl/examples/libs/gif/lv_example_gif.h:
+include/../include/lvgl/examples/libs/lodepng/lv_example_lodepng.h:
+include/../include/lvgl/examples/libs/libpng/lv_example_libpng.h:
+include/../include/lvgl/examples/libs/qrcode/lv_example_qrcode.h:
+include/../include/lvgl/examples/libs/rlottie/lv_example_rlottie.h:
+include/../include/lvgl/examples/libs/tjpgd/lv_example_tjpgd.h:
+include/../include/lvgl/examples/libs/libjpeg_turbo/lv_example_libjpeg_turbo.h:
+include/../include/lvgl/examples/libs/tiny_ttf/lv_example_tiny_ttf.h:
+include/../include/lvgl/examples/libs/svg/lv_example_svg.h:
+include/../include/lvgl/examples/others/lv_example_others.h:
+include/../include/lvgl/examples/others/file_explorer/lv_example_file_explorer.h:
+include/../include/lvgl/examples/others/font_manager/lv_example_font_manager.h:
+include/../include/lvgl/examples/others/fragment/lv_example_fragment.h:
+include/../include/lvgl/examples/others/gridnav/lv_example_gridnav.h:
+include/../include/lvgl/examples/others/ime/lv_example_ime_pinyin.h:
+include/../include/lvgl/examples/others/imgfont/lv_example_imgfont.h:
+include/../include/lvgl/examples/others/monkey/lv_example_monkey.h:
+include/../include/lvgl/examples/others/observer/lv_example_observer.h:
+include/../include/lvgl/examples/others/snapshot/lv_example_snapshot.h:
+include/../include/lvgl/examples/porting/osal/lv_example_osal.h:
+include/../include/lvgl/examples/scroll/lv_example_scroll.h:
+include/../include/lvgl/examples/styles/lv_example_style.h:
+include/../include/lvgl/examples/widgets/lv_example_widgets.h:
