@@ -36,7 +36,7 @@ static void style_init (void){
     lv_style_init(&style_trestle);
     
     lv_style_set_bg_opa(&style_trestle, LV_OPA_COVER);
-    
+
 }
 
 class button {
@@ -46,7 +46,7 @@ class button {
         int padding;
 
         lv_color_t backgroundColour, highlightColour, hoverColour, clickColour;
-        lv_style_t * btnStyle;
+        lv_style_t * btnStyle;\
         std::string text;
 
         bool selected;
