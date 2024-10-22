@@ -28,6 +28,17 @@ const inline int ROW_SIZE = 34;
 const inline int BTN_PADDING = 2;
 const inline int BTN_TXT_LEFT_PADDING = 5;
 
+inline lv_style_t style_trestle;
+
+static void style_init (void){
+    
+
+    lv_style_init(&style_trestle);
+    
+    lv_style_set_bg_opa(&style_trestle, LV_OPA_COVER);
+    
+}
+
 class button {
     public:
         int x,y;
@@ -53,38 +64,6 @@ class button {
                 , text(txt) 
                 , selected(sel)
                 {};
-
-        void draw(){
-            lv_obj_t * buttonObject = lv_obj_create(lv_scr_act());
-
-            lv_obj_set_size(buttonObject,width,height);
-            lv_obj_set_pos(buttonObject,x,y);
-
-            // default state
-            lv_obj_set_style_bg_color(buttonObject, backgroundColour,LV_STATE_DEFAULT);
-            lv_obj_set_style_outline_color(buttonObject,highlightColour,LV_STATE_DEFAULT);
-
-            // hover state
-            lv_obj_set_style_bg_color(buttonObject,hoverColour,LV_STATE_PRESSED); 
-            lv_obj_set_style_outline_color(buttonObject, highlightColour, LV_STATE_PRESSED);
-
-            // selected state
-            lv_obj_set_style_bg_color(buttonObject, clickColour, LV_STATE_CHECKED);
-            lv_obj_set_style_outline_color(buttonObject, highlightColour, LV_STATE_CHECKED);
-
-            // text label
-            lv_obj_t * label = lv_label_create(buttonObject);
-            lv_label_set_text(label, text.data());
-            lv_obj_set_style_text_color(label, highlightColour, LV_STATE_ANY);
-            lv_obj_align(label,LV_ALIGN_CENTER,0,0);
-
-            // add callback for being pressed
-            lv_obj_add_event_cb(buttonObject, btn_event_cb, LV_EVENT_PRESSED, NULL);
-        }
-
-        static void btn_event_cb(lv_event_t * e){
-            
-        }
 };
 
 /*
@@ -108,6 +87,4 @@ inline void initSelectorMenu(){
     std::vector<button> e;
     
     button mikeel = button(20,20, 200,50,lv_color_hex(0x403C40),lv_color_hex(0xFFF2FE),lv_color_hex(0x9c919c),lv_color_make(90,85,30),"h");
-    
-    mikeel.draw();
 }
